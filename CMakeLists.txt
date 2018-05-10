@@ -30,9 +30,12 @@ source_group("Sources" FILES ${PROJECT_SOURCES})
 # Glfw needs to know about vulkan
 add_definitions(-DGLFW_INCLUDE_VULKAN)
 
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
+
 # Add executable and link
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
-include_directories(${Vulkan_INCLUDE_DIRS}  
+include_directories(${Vulkan_INCLUDE_DIRS}
+					include/
 					ext/glm
 					ext/glfw/include)
 target_link_libraries (${PROJECT_NAME} ${Vulkan_LIBRARIES} glfw)
