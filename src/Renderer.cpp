@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <cassert>
 #include <vector>
+#include <iostream>
 
 Renderer::Renderer() {
 	_initInstance();
@@ -18,13 +19,15 @@ void Renderer::_initInstance() {
 	// Set up application info
 	VkApplicationInfo application_info {};
 	application_info.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
-	application_info.apiVersion = VK_API_VERSION_1_1;
+	//application_info.apiVersion = VK_MAKE_VERSION(1, 2, 20);
 	application_info.applicationVersion = VK_MAKE_VERSION(0, 1, 0);
 	application_info.pApplicationName = "Vulkan Engine";
 
 	VkInstanceCreateInfo instance_create_info{};
 	instance_create_info.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
 	instance_create_info.pApplicationInfo = &application_info;
+	instance_create_info.enabledLayerCount = mInstanceLayers.size();
+	instance_create_info.ppEnabledLayerNames = mInstanceLayers.data();
 
 	auto err = vkCreateInstance(&instance_create_info, nullptr, &mInstance);
 	if (err != VK_SUCCESS) {
@@ -67,6 +70,32 @@ void Renderer::_initDevice() {
 			assert(1 && "Vulkan ERROR: Queue family supporting graphics not found!");
 			std::exit(-1);
 		}
+	}
+
+	// Validation layers
+	{
+		uint32_t layer_count = 0;
+		vkEnumerateInstanceLayerProperties(&layer_count, nullptr);
+		std::vector<VkLayerProperties> layer_property_list(layer_count);
+		vkEnumerateInstanceLayerProperties(&layer_count, layer_property_list.data());
+		std::cout << "Instance Layers: \n";
+		for (auto &i : layer_property_list) {
+			std::cout << " " << i.layerName << "\t\t | " << i.description << std::endl;
+		}
+		std::cout << std::endl;
+	}
+
+	// Device layers - DEPRECATED!!
+	{
+		uint32_t layer_count = 0;
+		vkEnumerateDeviceLayerProperties(mGpu, &layer_count, nullptr);
+		std::vector<VkLayerProperties> layer_property_list(layer_count);
+		vkEnumerateDeviceLayerProperties(mGpu, &layer_count, layer_property_list.data());
+		std::cout << "Device Layers: \n";
+		for (auto &i : layer_property_list) {
+			std::cout << " " << i.layerName << "\t\t | " << i.description << std::endl;
+		}
+		std::cout << std::endl;
 	}
 
 	// Type of work that gpu will do

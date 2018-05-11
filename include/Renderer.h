@@ -20,4 +20,11 @@ private:
 	VkPhysicalDeviceProperties mGpuProperties;
 
 	uint32_t mGraphicsFamilyIndex;
+
+	std::vector<const char*> mInstanceLayers;
+	std::vector<const char*> mInstanceExtensionss;
+
+	// Deprecated!!
+	std::vector<const char*> mDeviceLayers;
+	std::vector<const char*> mDeviceExtensions;
 };
