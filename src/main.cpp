@@ -1,9 +1,16 @@
-#include "Renderer.h"
+#include "Engine/Engine.h"
 
 int main() {
-	Renderer r;
+	Engine engine;
+	// Create some config
+
+
+
+
+
 	return 0;
 }
+
 //
 //#include <GLFW/glfw3.h>
 //
