@@ -2,14 +2,16 @@
 #include "glfwdisplay.h"
 
 ModuleRegister::ModuleRegister() {
-    // mRenderer
-    // mUpdater
-    RegisterModule(std::make_unique<DisplayGlfw>());
-    RegisterModule(std::make_unique<RendererVk>());
+    RegisterModule({std::make_unique<DisplayGlfw>()});
+    //RegisterModule(std::make_unique<RendererVk>());
 }
 
 ModuleRegister::~ModuleRegister() {
 
+}
+
+ModuleRegister::RegisterModule(const&& ModulePair module_pair) {
+    _modules.emplace(std::move(module_pair));
 }
 
 ModuleRegister::run() {
