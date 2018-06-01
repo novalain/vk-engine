@@ -2,8 +2,11 @@
 
 #include <vulkan/vulkan.h>
 #include <vector>
+#include "irenderer.h"
 
-class Renderer {
+namespace bl {
+
+class Renderer : public IRenderer {
 public:
 	Renderer();
 	~Renderer();
@@ -29,3 +32,5 @@ private:
 	std::vector<const char*> mDeviceLayers;
 	std::vector<const char*> mDeviceExtensions;
 };
+
+}
