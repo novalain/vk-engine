@@ -1,6 +1,13 @@
 #pragma once
 
+#include "core/moduleregister.h"
+#include "renderer/irenderer.h"
+
 namespace bl {
+
+namespace ir {
+	class IRenderer;
+}
 
 class Engine {
 public:
@@ -8,7 +15,8 @@ public:
 	void Run();
 
 private:
-	bool m_running = true;
+	ModuleRegister m_moduleRegister;
+	std::unique_ptr<ir::IRenderer> m_renderer;
 };
 
 } // namespace bl

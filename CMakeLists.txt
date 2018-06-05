@@ -9,7 +9,7 @@ if(MSVC)
 	set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
 else(MSVC)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -std=c++11")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -std=c++17")
 endif(MSVC)
 
 # Glfw stuff

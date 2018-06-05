@@ -9,8 +9,10 @@ namespace bl {
 struct ModuleData {
 	std::string name;
 	ModuleUpdate update_freq;
-//	std::unique_ptr<IModule> module;
+	std::unique_ptr<IModule> module;
 };
+
+class DisplayGlfw;
 
 class ModuleRegister {
 typedef std::pair<std::string, std::unique_ptr<IModule>> ModulePair;
@@ -18,7 +20,7 @@ typedef std::pair<std::string, std::unique_ptr<IModule>> ModulePair;
 public:
 	ModuleRegister();
 
-	void RegisterModule(const ModuleData&& module);
+	void RegisterModule(ModuleData&& module);
 	void Update();
 private:
 	std::vector<ModuleData> m_modules;

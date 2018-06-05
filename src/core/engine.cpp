@@ -1,19 +1,17 @@
 #include "engine.h"
 #include <iostream>
 
+#include "renderer/vulkan/renderervk.h"
+
 namespace bl {
 
 Engine::Engine() {
-    // mRenderer
-    // mUpdater
+    std::cout << "Setting up Engine ... \n";
+    m_renderer = std::make_unique<ir::RendererVk>();
 }
 
 void Engine::Run() {
-    std::cout << "Runninsssssssg engine\n";
-    //while (true) {
-    //   m_moduleRegister->update();
-    //    renderer->render();
-    //}
+    std::cout << "Blazing Engine Running ... \n";
 }
 
 } // namespace bl
