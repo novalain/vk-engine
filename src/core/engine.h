@@ -2,6 +2,7 @@
 
 #include "core/moduleregister.h"
 #include "renderer/irenderer.h"
+#include "display/idisplay.h"
 
 namespace bl {
 
@@ -15,7 +16,8 @@ public:
 	void Run();
 
 private:
-	ModuleRegister m_moduleRegister;
+	std::unique_ptr<ModuleRegister> m_module_register;
+	std::unique_ptr<IDisplay> m_display;
 	std::unique_ptr<ir::IRenderer> m_renderer;
 };
 

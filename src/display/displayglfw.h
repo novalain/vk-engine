@@ -1,16 +1,16 @@
 #pragma once
 
-#include "core/imodule.h"
+#include "idisplay.h"
 #include <string>
 
 struct GLFWwindow;
 
 namespace bl {
-	
-class DisplayGlfw : public IModule {
+
+class DisplayGlfw : public IDisplay {
 public:
 	DisplayGlfw();
-	~DisplayGlfw(); 
+	~DisplayGlfw();
 	void _Initialize();
 
 	virtual void Update() override;

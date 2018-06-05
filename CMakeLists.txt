@@ -7,7 +7,7 @@ find_package(Vulkan REQUIRED)
 # Set compilation flags
 if(MSVC)
 	set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /std:c++17")
 else(MSVC)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -std=c++17")
 endif(MSVC)

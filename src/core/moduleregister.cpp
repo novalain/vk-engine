@@ -4,7 +4,7 @@
 namespace bl {
 
 ModuleRegister::ModuleRegister() {
-    RegisterModule({"Display", UPDATE_ALWAYS, std::make_unique<DisplayGlfw>()});
+    //RegisterModule({"Display", UPDATE_ALWAYS, std::make_unique<DisplayGlfw>()});
 }
 
 void ModuleRegister::RegisterModule(ModuleData&& module) {
@@ -12,9 +12,9 @@ void ModuleRegister::RegisterModule(ModuleData&& module) {
 }
 
 void ModuleRegister::Update() {
-for (const auto& module_data : m_modules) {
-        module_data.module->Update();
-   }
+	for (const auto& module_data : m_modules) {
+		module_data.module->Update();
+	}
 }
 
 } // namespace bl

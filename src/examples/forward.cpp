@@ -7,7 +7,7 @@ int main() {
 	//e.set_renderer
 
     e.Run();
-	
+
     std::cin.get();
     return 0;
 }
